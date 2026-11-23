@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐥 Die kleine Kreuzfahrt-Ente</title>
+
+<title>Captain Quacks Geheimflotte</title>
 
 <style>
 body{
@@ -12,13 +13,12 @@ body{
     background:linear-gradient(#0077be,#00a8e8,#87ceeb);
     color:white;
     text-align:center;
-    overflow-x:hidden;
 }
 
 .container{
-    max-width:800px;
+    max-width:850px;
     margin:auto;
-    padding:30px 20px;
+    padding:20px;
 }
 
 .card{
@@ -31,106 +31,170 @@ body{
 }
 
 h1{
-    font-size:3em;
-    margin-bottom:10px;
+    font-size:3rem;
 }
 
-h2{
-    color:#ffe082;
-}
-
-.wave{
+.duck-number{
     font-size:2rem;
-    animation:float 3s ease-in-out infinite;
+    color:#ffe082;
+    font-weight:bold;
 }
 
-@keyframes float {
-    0% {transform:translateY(0);}
-    50% {transform:translateY(-10px);}
-    100% {transform:translateY(0);}
+button{
+    background:#ffd54f;
+    border:none;
+    border-radius:12px;
+    padding:15px 25px;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#ffca28;
 }
 
 .footer{
-    margin-top:30px;
-    opacity:0.9;
-    font-size:0.9em;
+    margin-top:40px;
+    opacity:0.85;
+}
+
+.quote{
+    font-style:italic;
+    color:#fff7c2;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
 
-<div class="wave">🐥🚢🌊</div>
-
-<h1>Ahoy, Entendecker!</h1>
+<h1>🦆 Captain Quacks Geheimflotte</h1>
 
 <div class="card">
+
+<div id="duckNumber" class="duck-number">
+🦆 Entennummer wird geladen...
+</div>
+
 <p>
 Herzlichen Glückwunsch!
 </p>
 
 <p>
-Du hast eine kleine Kreuzfahrt-Ente gefunden.
-Sie ist nicht verloren gegangen.
-Sie wurde auf ihre ganz persönliche Reise geschickt.
+Du hast eine von 30 geheimen Kreuzfahrt-Enten auf ihrer Reise gefunden.
 </p>
+
+<p>
+Ob du sie behältst oder weiterreisen lässt:
+Du bist jetzt offiziell Teil von Captain Quacks Crew.
+</p>
+
 </div>
 
 <div class="card">
-<h2>⚓ Deine Mission</h2>
 
-<p><b>Option 1:</b><br>
-Behalte die Ente als Glücksbringer.</p>
+<h2>📖 Die Geschichte</h2>
 
-<p><b>Option 2:</b><br>
-Nimm sie mit auf ihr nächstes Abenteuer und zeige ihr die schönsten Plätze auf der AIDAnova.</p>
+<p>
+Captain Quack durchquert seit vielen Jahren die Weltmeere.
+Seine Mission:
+Menschen ein Lächeln schenken.
+</p>
 
-<p><b>Option 3:</b><br>
-Verstecke sie erneut und bereite dem nächsten Finder eine Freude.</p>
+<p>
+Jede Ente seiner Geheimflotte hat eine eigene Nummer und reist von Finder zu Finder weiter.
+</p>
+
 </div>
 
 <div class="card">
-<h2>🍀 Entenglück für deine Reise</h2>
+
+<h2>🍀 Entenglück</h2>
 
 <p>
 ✅ Sonnige Hafentage<br>
 ✅ Rückenwind auf See<br>
 ✅ Gute Laune<br>
-✅ Und immer einen Platz am Buffet 😉
+✅ Keine Warteschlange am Buffet 😉
 </p>
+
 </div>
 
 <div class="card">
-<h2>🌊 Eine kleine Erinnerung</h2>
+
+<h2>📝 Entenlogbuch</h2>
 
 <p>
-Die schönsten Begegnungen entstehen oft völlig unerwartet.
-Vielleicht gehört diese kleine Ente heute dazu.
+Hilf Captain Quack dabei, die Reise dieser Ente zu dokumentieren.
 </p>
 
-<p>
-Genieße deine Reise und sammle unvergessliche Erinnerungen.
-</p>
+<button onclick="window.open('https://forms.gle/w22EKemSvdffLVpf8','_blank')">
+📍 Fundort eintragen
+</button>
+
 </div>
 
 <div class="card">
-<h2>🦆 Captain Quacks Geheimflotte</h2>
 
-<p>
-Diese Ente ist Mitglied der legendären Geheimflotte von Captain Quack.
-Ihr Auftrag:
-Menschen ein Lächeln schenken.
-</p>
+<h2>🎖 Spezialnachricht</h2>
+
+<p id="specialText" class="quote"></p>
+
 </div>
 
 <div class="footer">
-🚢 Metropolentour Dezember 2026<br>
-Mit besten Grüßen von einem Mitreisenden.
+🚢 AIDAnova Metropolentour Dezember 2026<br>
+Mit besten Grüßen von einem Mitreisenden
 </div>
 
 </div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const ente = params.get("ente") || "???";
+
+document.getElementById("duckNumber").innerHTML =
+"🦆 Du hast Ente #" + ente + " gefunden!";
+
+const sprueche = {
+"001":"Flaggschiff der Geheimflotte.",
+"002":"Hat angeblich schon Rotterdam erkundet.",
+"003":"Liebt Meerblick.",
+"004":"Buffet-Experte.",
+"005":"Spezialist für Sonnendecks.",
+"006":"Hat immer Rückenwind.",
+"007":"Lizenz zum Quaken.",
+"008":"Wurde zuletzt nahe einer Cocktailbar gesichtet.",
+"009":"Pooldeck-Veteran.",
+"010":"Kapitänsanwärter.",
+"011":"Die Abenteuerlustige.",
+"012":"Meisterin des Versteckens.",
+"013":"Bringt Glück. Meistens.",
+"014":"Fan von Hafenausflügen.",
+"015":"Nordseeprofi.",
+"016":"Hat Seegang noch nie gestört.",
+"017":"Brauhaus-Insider.",
+"018":"Wellenreiter.",
+"019":"Frühstücksbuffet-Tester.",
+"020":"Sonnensammler.",
+"021":"Wurde zuletzt an Deck gesichtet.",
+"022":"Hat stets gute Laune.",
+"023":"Kreuzfahrtprofi.",
+"024":"Cocktaildeck-Beobachter.",
+"025":"Seetüchtig zertifiziert.",
+"026":"Immer auf Entdeckungsreise.",
+"027":"Kann Geheimnisse bewahren.",
+"028":"Leitet die Reserveflotte.",
+"029":"Kurz vor der Beförderung.",
+"030":"Admiral der Geheimflotte."
+};
+
+document.getElementById("specialText").innerText =
+sprueche[ente] || "Auf geheimer Mission.";
+</script>
 
 </body>
 </html>
